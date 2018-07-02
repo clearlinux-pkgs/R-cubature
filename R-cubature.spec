@@ -4,7 +4,7 @@
 #
 Name     : R-cubature
 Version  : 1.4
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/cubature_1.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cubature_1.4.tar.gz
 Summary  : Adaptive Multivariate Integration over Hypercubes
