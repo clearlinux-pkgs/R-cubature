@@ -4,29 +4,35 @@
 #
 Name     : R-cubature
 Version  : 2.0.3
-Release  : 11
+Release  : 12
 URL      : https://cran.r-project.org/src/contrib/cubature_2.0.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cubature_2.0.3.tar.gz
 Summary  : Adaptive Multivariate Integration over Hypercubes
 Group    : Development/Tools
 License  : GPL-3.0 LGPL-3.0
 Requires: R-cubature-lib = %{version}-%{release}
-Requires: R-Rcpp
-Requires: R-benchr
-Requires: R-rlang
+Requires: R-RcppProgress
+Requires: R-highr
+Requires: R-markdown
+Requires: R-mvtnorm
 BuildRequires : R-Rcpp
+BuildRequires : R-RcppProgress
 BuildRequires : R-benchr
+BuildRequires : R-highr
+BuildRequires : R-markdown
+BuildRequires : R-mvtnorm
 BuildRequires : R-rlang
 BuildRequires : buildreq-R
 BuildRequires : buildreq-qmake
 
 %description
-G. Johnson for adaptive multivariate integration over hypercubes
-    and the Cuba C library of Thomas Hahn for deterministic and
-    Monte Carlo integration. Scalar and vector interfaces for 
-    cubature and Cuba routines are provided; the vector interfaces
-    are highly recommended as demonstrated in the package
-    vignette.
+# cubature
+[![Travis-CI Build
+Status](https://travis-ci.org/bnaras/cubature.svg?branch=master)](https://travis-ci.org/bnaras/cubature)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/cubature)](https://cran.r-project.org/package=cubature)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/bnaras/cubature/master.svg)](https://codecov.io/github/bnaras/cubature?branch=master)
+[![](https://cranlogs.r-pkg.org/badges/cubature)](https://CRAN.R-project.org/package=cubature)
 
 %package lib
 Summary: lib components for the R-cubature package.
@@ -44,10 +50,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545249265
+export SOURCE_DATE_EPOCH=1552732184
 
 %install
-export SOURCE_DATE_EPOCH=1545249265
+export SOURCE_DATE_EPOCH=1552732184
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -83,8 +89,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library cubature|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  cubature || :
 
 
 %files
@@ -122,7 +127,9 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/cubature/include/exp_cubature.h
 /usr/lib64/R/library/cubature/include/exp_cubature_typedefs.h
 /usr/lib64/R/library/cubature/include/rcubature.h
-/usr/lib64/R/library/cubature/libs/symbols.rds
+/usr/lib64/R/library/cubature/tests/testthat.R
+/usr/lib64/R/library/cubature/tests/testthat/test_cuba.R
+/usr/lib64/R/library/cubature/tests/testthat/test_cubature.R
 
 %files lib
 %defattr(-,root,root,-)

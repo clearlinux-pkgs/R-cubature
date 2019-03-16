@@ -1,4 +1,8 @@
 2.0.3
 R-Rcpp
+R-RcppProgress
 R-benchr
+R-highr
+R-markdown
+R-mvtnorm
 R-rlang
