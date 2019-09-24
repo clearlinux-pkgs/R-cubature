@@ -4,35 +4,27 @@
 #
 Name     : R-cubature
 Version  : 2.0.3
-Release  : 18
+Release  : 19
 URL      : https://cran.r-project.org/src/contrib/cubature_2.0.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cubature_2.0.3.tar.gz
 Summary  : Adaptive Multivariate Integration over Hypercubes
 Group    : Development/Tools
 License  : GPL-3.0 LGPL-3.0
 Requires: R-cubature-lib = %{version}-%{release}
-Requires: R-RcppProgress
-Requires: R-highr
-Requires: R-markdown
-Requires: R-mvtnorm
+Requires: R-Rcpp
+Requires: R-benchr
 BuildRequires : R-Rcpp
-BuildRequires : R-RcppProgress
 BuildRequires : R-benchr
-BuildRequires : R-highr
-BuildRequires : R-markdown
-BuildRequires : R-mvtnorm
-BuildRequires : R-rlang
 BuildRequires : buildreq-R
 BuildRequires : buildreq-qmake
 
 %description
-# cubature
-[![Travis-CI Build
-Status](https://travis-ci.org/bnaras/cubature.svg?branch=master)](https://travis-ci.org/bnaras/cubature)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/cubature)](https://cran.r-project.org/package=cubature)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/bnaras/cubature/master.svg)](https://codecov.io/github/bnaras/cubature?branch=master)
-[![](https://cranlogs.r-pkg.org/badges/cubature)](https://CRAN.R-project.org/package=cubature)
+G. Johnson for adaptive multivariate integration over hypercubes
+    and the Cuba C library of Thomas Hahn for deterministic and
+    Monte Carlo integration. Scalar and vector interfaces for 
+    cubature and Cuba routines are provided; the vector interfaces
+    are highly recommended as demonstrated in the package
+    vignette.
 
 %package lib
 Summary: lib components for the R-cubature package.
@@ -49,13 +41,13 @@ lib components for the R-cubature package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552732184
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569349318
 
 %install
-export SOURCE_DATE_EPOCH=1552732184
+export SOURCE_DATE_EPOCH=1569349318
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -84,12 +76,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  cubature || :
+R CMD check --no-manual --no-examples --no-codoc cubature || :
 
 
 %files
