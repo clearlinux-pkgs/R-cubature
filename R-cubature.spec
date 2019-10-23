@@ -4,7 +4,7 @@
 #
 Name     : R-cubature
 Version  : 2.0.3
-Release  : 19
+Release  : 20
 URL      : https://cran.r-project.org/src/contrib/cubature_2.0.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cubature_2.0.3.tar.gz
 Summary  : Adaptive Multivariate Integration over Hypercubes
@@ -12,19 +12,22 @@ Group    : Development/Tools
 License  : GPL-3.0 LGPL-3.0
 Requires: R-cubature-lib = %{version}-%{release}
 Requires: R-Rcpp
-Requires: R-benchr
+Requires: R-mvtnorm
 BuildRequires : R-Rcpp
 BuildRequires : R-benchr
+BuildRequires : R-mvtnorm
 BuildRequires : buildreq-R
 BuildRequires : buildreq-qmake
+BuildRequires : util-linux
 
 %description
-G. Johnson for adaptive multivariate integration over hypercubes
-    and the Cuba C library of Thomas Hahn for deterministic and
-    Monte Carlo integration. Scalar and vector interfaces for 
-    cubature and Cuba routines are provided; the vector interfaces
-    are highly recommended as demonstrated in the package
-    vignette.
+# cubature
+[![Travis-CI Build
+Status](https://travis-ci.org/bnaras/cubature.svg?branch=master)](https://travis-ci.org/bnaras/cubature)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/cubature)](https://cran.r-project.org/package=cubature)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/bnaras/cubature/master.svg)](https://codecov.io/github/bnaras/cubature?branch=master)
+[![](https://cranlogs.r-pkg.org/badges/cubature)](https://CRAN.R-project.org/package=cubature)
 
 %package lib
 Summary: lib components for the R-cubature package.
@@ -42,10 +45,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569349318
+export SOURCE_DATE_EPOCH=1571814230
 
 %install
-export SOURCE_DATE_EPOCH=1569349318
+export SOURCE_DATE_EPOCH=1571814230
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
