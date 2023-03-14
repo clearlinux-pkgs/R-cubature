@@ -4,7 +4,7 @@
 #
 Name     : R-cubature
 Version  : 2.0.4.6
-Release  : 48
+Release  : 49
 URL      : https://cran.r-project.org/src/contrib/cubature_2.0.4.6.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/cubature_2.0.4.6.tar.gz
 Summary  : Adaptive Multivariate Integration over Hypercubes
@@ -16,9 +16,6 @@ Requires: R-Rcpp
 BuildRequires : R-Rcpp
 BuildRequires : buildreq-R
 BuildRequires : buildreq-qmake
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 G. Johnson for adaptive multivariate integration over hypercubes
@@ -54,10 +51,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1674497143
+export SOURCE_DATE_EPOCH=1678814006
 
 %install
-export SOURCE_DATE_EPOCH=1674497143
+export SOURCE_DATE_EPOCH=1678814006
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-cubature
 cp %{_builddir}/cubature/src/Cuba-4.2/COPYING %{buildroot}/usr/share/package-licenses/R-cubature/f45ee1c765646813b442ca58de72e20a64a7ddba || :
